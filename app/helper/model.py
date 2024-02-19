@@ -21,11 +21,11 @@ class Alert(BaseModel):
    # time_emote = SkypeMsg.emote("watch")
 
     def model_representer(self):
-        emote1 = status_emoticon_dict.get(self.status, "")
+        time1_emote = SkypeMsg.emote("time")
         return (
             f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
-            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt} {SkypeMsg.emote1("time")}\n"
+            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt} {time1_emote}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
         )
