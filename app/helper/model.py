@@ -89,7 +89,6 @@ class GrafanaAlert(BaseModel):
             project_emote = SkypeMsg.emote("lips")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
-                "firi": SkypeMsg.emote("lips"),
                 "resolved": SkypeMsg.emote("smile"),
             }
 
