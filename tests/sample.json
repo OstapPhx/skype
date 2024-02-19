@@ -1,0 +1,227 @@
+[
+  {
+    "receiver": "My Super Webhook",
+    "status": "firing",
+    "orgId": 1,
+    "alerts": [
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High memory usage",
+          "team": "blue",
+          "zone": "us-1"
+        },
+        "annotations": {
+          "description": "The system has high memory usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone us-1"
+        },
+        "startsAt": "2021-10-12T09:51:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/1afz29v7z/edit",
+        "fingerprint": "c6eadffa33fcdf37",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT2%2Cteam%3Dblue%2Czone%3Dus-1",
+        "dashboardURL": "",
+        "panelURL": "",
+        "valueString": "[ metric='' labels={} value=14151.331895396988 ]"
+      },
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High CPU usage",
+          "team": "blue",
+          "zone": "eu-1"
+        },
+        "annotations": {
+          "description": "The system has high CPU usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone eu-1"
+        },
+        "startsAt": "2021-10-12T09:56:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/d1rdpdv7k/edit",
+        "fingerprint": "bc97ff14869b13e3",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT1%2Cteam%3Dblue%2Czone%3Deu-1",
+        "dashboardURL": "",
+        "panelURL": "",
+        "valueString": "[ metric='' labels={} value=47043.702386305304 ]"
+      }
+    ],
+    "groupLabels": {},
+    "commonLabels": {
+      "team": "blue"
+    },
+    "commonAnnotations": {},
+    "externalURL": "https://play.grafana.org/",
+    "version": "1",
+    "groupKey": "{}:{}",
+    "truncatedAlerts": 0,
+    "title": "[FIRING:2]  (blue)",
+    "state": "alerting",
+    "message": "**Firing**\n\nLabels:\n - alertname = T2\n - team = blue\n - zone = us-1\nAnnotations:\n - description = This is the alert rule checking the second system\n - runbook_url = https://myrunbook.com\n - summary = This is my summary\nSource: https://play.grafana.org/alerting/1afz29v7z/edit\nSilence: https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT2%2Cteam%3Dblue%2Czone%3Dus-1\n\nLabels:\n - alertname = T1\n - team = blue\n - zone = eu-1\nAnnotations:\nSource: https://play.grafana.org/alerting/d1rdpdv7k/edit\nSilence: https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT1%2Cteam%3Dblue%2Czone%3Deu-1\n"
+  },
+  {
+    "receiver": "dfdfsdf",
+    "status": "firing",
+    "orgId": 1,
+    "alerts": [
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High memory usage",
+          "team": "blue",
+          "zone": "us-1"
+        },
+        "annotations": {
+          "description": "The system has high memory usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone us-1"
+        },
+        "startsAt": "2021-10-12T09:51:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/1afz29v7z/edit",
+        "fingerprint": "c6eadffa33fcdf37",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT2%2Cteam%3Dblue%2Czone%3Dus-1",
+        "dashboardURL": "",
+        "panelURL": "",
+        "valueString": "[ metric='' labels={} value=14151.331895396988 ]"
+      },
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High CPU usage",
+          "team": "blue",
+          "zone": "eu-1"
+        },
+        "annotations": {
+          "description": "The system has high CPU usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone eu-1"
+        },
+        "startsAt": "2021-10-12T09:56:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/d1rdpdv7k/edit",
+        "fingerprint": "bc97ff14869b13e3",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT1%2Cteam%3Dblue%2Czone%3Deu-1",
+        "valueString": "[ metric='' labels={} value=47043.702386305304 ]"
+      }
+    ],
+    "groupLabels": {},
+    "commonLabels": {
+      "team": "blue"
+    },
+    "commonAnnotations": {},
+    "externalURL": "https://play.grafana.org/",
+    "version": "1",
+    "groupKey": "{}:{}",
+    "truncatedAlerts": 0
+  },
+  {
+    "receiver": "Skype Order Center Chat",
+    "status": "resolved",
+    "orgId": 1,
+    "alerts": [{
+      "status": "resolved",
+      "labels": {
+        "alertname": "OrderCenter: Express Kafka Message Count",
+        "grafana_folder": "Order_Center",
+        "job": "kafka",
+        "topic": "dbz_raw.express_mysql.zoodfood_db.Orders"
+      },
+      "annotations": {
+        "runbook_url": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/d/T8xVb997k/order-center?orgId=1&refresh=30s&editPanel=2&tab=alert&from=1677414036107&to=1677435636107"
+      },
+      "startsAt": "2023-03-05T05:15:00+03:30",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/alerting/grafana/_TNKAhx4k/view?orgId=1",
+      "fingerprint": "1dbd5c7e00ee3cba",
+      "silenceURL": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DOrderCenter%3A+Express+Kafka+Message+Count&matcher=grafana_folder%3DOrder_Center&matcher=job%3Dkafka&matcher=topic%3Ddbz_raw.express_mysql.zoodfood_db.Orders",
+      "dashboardURL": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/d/T8xVb997k?orgId=1",
+      "panelURL": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/d/T8xVb997k?orgId=1&viewPanel=2",
+      "valueString": "[ var='B' labels={job=kafka, topic=dbz_raw.express_mysql.zoodfood_db.Orders} value=0.03793103448275863 ], [ var='C' labels={job=kafka, topic=dbz_raw.express_mysql.zoodfood_db.Orders} value=1 ]"
+    }],
+    "groupLabels": {},
+    "commonLabels": {
+      "alertname": "OrderCenter: Express Kafka Message Count",
+      "grafana_folder": "Order_Center",
+      "job": "kafka",
+      "topic": "dbz_raw.express_mysql.zoodfood_db.Orders"
+    },
+    "commonAnnotations": {},
+    "externalURL": "https://grafana-dpn.apps.private.okd4.teh-1.snappcloud.io/",
+    "version": 1,
+    "groupKey": "{}/{pipeline=\"ordercenter_cdc\"}:{alertname=\"OrderCenter: Express Kafka Message Count\", grafana_folder=\"Order_Center\"}",
+    "truncatedAlerts": 0,
+    "title": "[FIRING:1] OrderCenter: Express Kafka Message Count Order_Center (kafka dbz_raw.express_mysql.zoodfood_db.Orders)",
+    "state": "alerting",
+    "message": "Firing"
+  },
+  {
+    "receiver": "My Super Webhook",
+    "status": "firing",
+    "orgId": 1,
+    "alerts": [
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High memory usage",
+          "team": "blue",
+          "zone": "us-1"
+        },
+        "annotations": {
+          "description": "The system has high memory usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone us-1"
+        },
+        "startsAt": "2021-10-12T09:51:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/1afz29v7z/edit",
+        "fingerprint": "c6eadffa33fcdf37",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT2%2Cteam%3Dblue%2Czone%3Dus-1",
+        "dashboardURL": "",
+        "panelURL": "",
+        "values": {
+          "data-avg": 14151.331895396988
+        },
+        "valueString": "[ metric='data-avg' labels={} value=14151.331895396988 ]",
+        "imageURL": "www.sampleurl.com/image"
+      },
+      {
+        "status": "firing",
+        "labels": {
+          "alertname": "High CPU usage",
+          "team": "blue",
+          "zone": "eu-1"
+        },
+        "annotations": {
+          "description": "The system has high CPU usage",
+          "runbook_url": "https://myrunbook.com/runbook/1234",
+          "summary": "This alert was triggered for zone eu-1"
+        },
+        "startsAt": "2021-10-12T09:56:03.157076+02:00",
+        "endsAt": "0001-01-01T00:00:00Z",
+        "generatorURL": "https://play.grafana.org/alerting/d1rdpdv7k/edit",
+        "fingerprint": "bc97ff14869b13e3",
+        "silenceURL": "https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT1%2Cteam%3Dblue%2Czone%3Deu-1",
+        "dashboardURL": "",
+        "panelURL": "",
+        "values": {
+          "data-avg": 47043.702386305304
+        },
+        "valueString": "[ metric='data-avg' labels={} value=47043.702386305304 ]"
+      }
+    ],
+    "groupLabels": {},
+    "commonLabels": {
+      "team": "blue"
+    },
+    "commonAnnotations": {},
+    "externalURL": "https://play.grafana.org/",
+    "version": "1",
+    "groupKey": "{}:{}",
+    "truncatedAlerts": 0,
+    "title": "[FIRING:2]  (blue)",
+    "state": "alerting",
+    "message": "**Firing**\n\nLabels:\n - alertname = T2\n - team = blue\n - zone = us-1\nAnnotations:\n - description = This is the alert rule checking the second system\n - runbook_url = https://myrunbook.com\n - summary = This is my summary\nSource: https://play.grafana.org/alerting/1afz29v7z/edit\nSilence: https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT2%2Cteam%3Dblue%2Czone%3Dus-1\n\nLabels:\n - alertname = T1\n - team = blue\n - zone = eu-1\nAnnotations:\nSource: https://play.grafana.org/alerting/d1rdpdv7k/edit\nSilence: https://play.grafana.org/alerting/silence/new?alertmanager=grafana&matchers=alertname%3DT1%2Cteam%3Dblue%2Czone%3Deu-1\n"
+  }
+]
