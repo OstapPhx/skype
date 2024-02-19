@@ -10,12 +10,11 @@ class Alert(BaseModel):
     labels: Dict[str, str]
     annotations: Dict[str, str]
     startsAt: str
-    endsAt: str
     generatorURL: str
     fingerprint: str
+    commitURL: str
     silenceURL: str
     dashboardURL: Optional[str]
-    panelURL: Optional[str]
     valueString: str
     values: Optional[Dict[str, float]]
     imageURL: Optional[str]
@@ -24,10 +23,9 @@ class Alert(BaseModel):
         return (
             f"{SkypeMsg.bold('Labels')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
-            f"{SkypeMsg.bold('Starts at')}: {self.startsAt}\n"
-            f"{SkypeMsg.bold('Ends at')}: {self.endsAt}\n"
-            f"{SkypeMsg.link(url=self.panelURL, display='Panel URL')}\n"
-            f"{SkypeMsg.link(url=self.silenceURL, display='Silence URL')}\n"
+            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
+            f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
+            f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
         )
 
     def value_string_parser(self):
