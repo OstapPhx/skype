@@ -21,7 +21,7 @@ class Alert(BaseModel):
 
     def model_representer(self):
         return (
-            f"{SkypeMsg.bold('Labels')}: {self.labels}\n"
+            f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
             f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
@@ -93,6 +93,6 @@ class GrafanaAlert(BaseModel):
             return (
                 f"{SkypeMsg.bold(alert_name)}:\n"
                 f"{SkypeMsg.bold('Status')}: {self.status.upper()} {emote}\n"
-                f"{SkypeMsg.bold('Alerts')}\n"
+                f"{SkypeMsg.bold('Info')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
