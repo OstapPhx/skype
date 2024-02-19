@@ -18,6 +18,7 @@ class Alert(BaseModel):
     valueString: str
     values: Optional[Dict[str, float]]
     imageURL: Optional[str]
+    time_emote = SkypeMsg.emote("watch")
 
     def model_representer(self):
         return (
@@ -85,7 +86,6 @@ class GrafanaAlert(BaseModel):
             join_char = "\n\n"
             text_indent = "    "
             alert_name = self.commonLabels.get("alertname", "")
-            time_emote = SkypeMsg.emote("watch")
             project_emote = SkypeMsg.emote("page")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
