@@ -86,7 +86,10 @@ class GrafanaAlert(BaseModel):
             join_char = "\n\n"
             text_indent = "    "
             alert_name = self.commonLabels.get("alertname", "")
-            project_emote = SkypeMsg.emote("lips")
+            project_emote = SkypeMsg.emote("speechbubble")
+            checkmark_emote = SkypeMsg.emote("checkmark")
+            pin_emote = SkypeMsg.emote("pin")
+            time_emote = SkypeMsg.emote("time")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
                 "resolved": SkypeMsg.emote("smile"),
@@ -95,7 +98,7 @@ class GrafanaAlert(BaseModel):
             emote = status_emoticon_dict.get(self.status, "")
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
-                f"{SkypeMsg.bold('Status')}: {self.status.upper()} \n"
-                f"{SkypeMsg.bold('Info')}\n"
+                f"{checkmark_emote} {SkypeMsg.bold('Status')}: {self.status.upper()} {time_emote} \n"
+                f"{pin_emote} {SkypeMsg.bold('Info')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
