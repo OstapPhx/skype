@@ -23,7 +23,7 @@ class Alert(BaseModel):
         return (
             f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
-            f"{SkypeMsg.bold('(23f1_stopwatch)Pipeline date')}: {self.startsAt}\n"
+            f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
         )
@@ -85,6 +85,8 @@ class GrafanaAlert(BaseModel):
             join_char = "\n\n"
             text_indent = "    "
             alert_name = self.commonLabels.get("alertname", "")
+            time_emote = SkypeMsg.emote("23f1_stopwatch")
+            project_emote = SkypeMsg.emote("1f4c4_pagefacingup")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
                 "resolved": SkypeMsg.emote("smile"),
@@ -92,7 +94,7 @@ class GrafanaAlert(BaseModel):
 
             emote = status_emoticon_dict.get(self.status, "")
             return (
-                f"{"smile"} {SkypeMsg.bold('Project:')} {self.projectName.upper()} \n"
+                f"{project_emote} {SkypeMsg.bold('Project:')} {self.projectName.upper()} \n"
                 f"{SkypeMsg.bold('Status')}: {self.status.upper()} {emote}\n"
                 f"{SkypeMsg.bold('Info')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
