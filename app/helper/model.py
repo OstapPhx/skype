@@ -21,11 +21,11 @@ class Alert(BaseModel):
    # time_emote = SkypeMsg.emote("watch")
 
     def model_representer(self):
-        time1_emote = SkypeMsg.emote("time")
+        time_emote = SkypeMsg.emote("time")
         return (
             f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
-            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt} {time_emote}\n"
+            f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
         )
@@ -90,7 +90,6 @@ class GrafanaAlert(BaseModel):
             project_emote = SkypeMsg.emote("speechbubble")
             checkmark_emote = SkypeMsg.emote("checkmark")
             pin_emote = SkypeMsg.emote("pin")
-            time_emote = SkypeMsg.emote("time")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
                 "resolved": SkypeMsg.emote("smile"),
