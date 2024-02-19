@@ -25,7 +25,7 @@ class Alert(BaseModel):
         return (
             f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
-            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt} {time1_emote}\n"
+            f"{SkypeMsg.bold('Pipeline date')}: {self.startsAt} {time_emote}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
         )
