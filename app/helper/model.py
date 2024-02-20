@@ -7,17 +7,17 @@ import re
 
 class Alert(BaseModel):
     status: str
-    labels: Dict[str, str]
+    labels: Optional[Dict[str, str]]
     stage: str
-    annotations: Dict[str, str]
+    annotations: Optional[Dict[str, str]]
     startsAt: str
-    generatorURL: str
-    fingerprint: str
+    generatorURL: Optional[str]
+    fingerprint: Optional[str]
     commitURL: str
     changelogURL: str
     silenceURL: str
     dashboardURL: Optional[str]
-    valueString: str
+    valueString: Optional[str]
     values: Optional[Dict[str, float]]
     imageURL: Optional[str]
    # time_emote = SkypeMsg.emote("watch")
@@ -56,13 +56,13 @@ class GrafanaAlert(BaseModel):
     orgId: Optional[int]
     projectName: str
     alerts: Optional[List[Alert]]
-    groupLabels: Dict[str, str]
-    commonLabels: Dict[str, str]
-    commonAnnotations: Dict[str, str]
-    externalURL: str
-    version: str
-    groupKey: str
-    truncatedAlerts: int
+    groupLabels: Optional[Dict[str, str]]
+    commonLabels: Optional[Dict[str, str]]
+    commonAnnotations: Optional[Dict[str, str]]
+    externalURL: Optional[str]
+    version: Optional[str]
+    groupKey: Optional[str]
+    truncatedAlerts: Optional[int]
     title: Optional[str]
     state: Optional[str]
     message: Optional[str]
