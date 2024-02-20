@@ -7,19 +7,19 @@ import re
 
 class Alert(BaseModel):
     status: str
-#    labels: Dict[str, str]
+    labels: Dict[str, str]
     stage: str
-#    annotations: Dict[str, str]
+    annotations: Dict[str, str]
     startsAt: str
-#    generatorURL: str
-#    fingerprint: str
+    generatorURL: str
+    fingerprint: str
     commitURL: str
     changelogURL: str
     silenceURL: str
-#    dashboardURL: Optional[str]
-#    valueString: str
-#    values: Optional[Dict[str, float]]
-#    imageURL: Optional[str]
+    dashboardURL: Optional[str]
+    valueString: str
+    values: Optional[Dict[str, float]]
+    imageURL: Optional[str]
    # time_emote = SkypeMsg.emote("watch")
 
     def model_representer(self):
@@ -51,18 +51,18 @@ class Alert(BaseModel):
 
 
 class GrafanaAlert(BaseModel):
-#    receiver: str
+    receiver: str
     status: str
-#    orgId: int
+    orgId: int
     projectName: str
-#    alerts: List[Alert]
-#    groupLabels: Dict[str, str]
-#    commonLabels: Dict[str, str]
-#    commonAnnotations: Dict[str, str]
-#    externalURL: str
-#    version: str
-#    groupKey: str
-#    truncatedAlerts: int
+    alerts: List[Alert]
+    groupLabels: Dict[str, str]
+    commonLabels: Dict[str, str]
+    commonAnnotations: Dict[str, str]
+    externalURL: str
+    version: str
+    groupKey: str
+    truncatedAlerts: int
     title: Optional[str]
     state: Optional[str]
     message: Optional[str]
@@ -105,3 +105,4 @@ class GrafanaAlert(BaseModel):
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
+            
