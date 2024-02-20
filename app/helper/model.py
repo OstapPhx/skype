@@ -8,11 +8,13 @@ import re
 class Alert(BaseModel):
     status: str
     labels: Dict[str, str]
+    stage: str
     annotations: Dict[str, str]
     startsAt: str
     generatorURL: str
     fingerprint: str
     commitURL: str
+    changelogURL: str
     silenceURL: str
     dashboardURL: Optional[str]
     valueString: str
@@ -23,11 +25,12 @@ class Alert(BaseModel):
     def model_representer(self):
         time_emote = SkypeMsg.emote("time")
         return (
-            f"{SkypeMsg.bold('Stage')}: {self.labels}\n"
+            f"{SkypeMsg.bold('Stage')}: {self.stage}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
             f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
+            f"{SkypeMsg.link(url=self.changelogURL, display='CHANGELOG.md')}\n"
         )
 
     def value_string_parser(self):
@@ -87,8 +90,8 @@ class GrafanaAlert(BaseModel):
             join_char = "\n\n"
             text_indent = "    "
             alert_name = self.commonLabels.get("alertname", "")
-            project_emote = SkypeMsg.emote("speechbubble")
-            checkmark_emote = SkypeMsg.emote("checkmark")
+            project_emote = SkypeMsg.emote("bomb")
+            checkmark_emote = SkypeMsg.emote("smile")
             pin_emote = SkypeMsg.emote("pushpin")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("bomb"),
@@ -99,6 +102,6 @@ class GrafanaAlert(BaseModel):
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
                 f"{checkmark_emote} {SkypeMsg.bold('Status')}: {self.status.upper()} \n"
-                f"{pin_emote} {SkypeMsg.bold('Info')}\n"
+                f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
