@@ -51,11 +51,11 @@ class Alert(BaseModel):
 
 
 class GrafanaAlert(BaseModel):
-    receiver: str
+    receiver: Optional[str]
     status: str
-    orgId: int
+    orgId: Optional[int]
     projectName: str
-    alerts: List[Alert]
+    alerts: Optional[List[Alert]]
     groupLabels: Dict[str, str]
     commonLabels: Dict[str, str]
     commonAnnotations: Dict[str, str]
@@ -105,4 +105,3 @@ class GrafanaAlert(BaseModel):
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
-            
