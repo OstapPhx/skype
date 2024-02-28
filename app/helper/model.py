@@ -16,17 +16,17 @@ class Alert(BaseModel):
     commitURL: str
     changelogURL: str
     silenceURL: str
-    sonarqubeURL: Optional[str]
-    app1URL: Optional[str]
-    app2URL: Optional[str]
-    app3URL: Optional[str]
-    app4URL: Optional[str]
-    app5URL: Optional[str]
-    app6URL: Optional[str]
-    app7URL: Optional[str]
-    app8URL: Optional[str]
-    app9URL: Optional[str]
-    app10URL: Optional[str]
+    sonarqubeurl: Optional[str]
+    app1url: Optional[str]
+    app2url: Optional[str]
+    app3url: Optional[str]
+    app4url: Optional[str]
+    app5url: Optional[str]
+    app6url: Optional[str]
+    app7url: Optional[str]
+    app8url: Optional[str]
+    app9url: Optional[str]
+    app10url: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -45,28 +45,28 @@ class Alert(BaseModel):
         )
 
         # Conditional lines based on URL values
-        if self.sonarqubeURL:
-            representation += f"{SkypeMsg.link(url=self.sonarqubeURL, display='SonarQube')}\n"
-        if self.app1URL:
-            representation += f"{SkypeMsg.bold('URL #1')}: {self.app1URL}\n"
-        if self.app2URL:
-            representation += f"{SkypeMsg.bold('URL #2')}: {self.app2URL}\n"
-        if self.app3URL:
-            representation += f"{SkypeMsg.bold('URL #3')}: {self.app3URL}\n"
-        if self.app4URL:
+        if self.sonarqubeurl:
+            representation += f"{SkypeMsg.link(url=self.sonarqubeurl, display='SonarQube')}\n"
+        if self.app1url:
+            representation += f"{SkypeMsg.bold('URL #1')}: {self.app1url}\n"
+        if self.app2url:
+            representation += f"{SkypeMsg.bold('URL #2')}: {self.app2url}\n"
+        if self.app3url:
+            representation += f"{SkypeMsg.bold('URL #3')}: {self.app3url}\n"
+        if self.app4url:
             representation += f"{SkypeMsg.bold('URL #4')}: {self.app4URL}\n"
-        if self.app5URL:
-            representation += f"{SkypeMsg.bold('URL #5')}: {self.app5URL}\n"
-        if self.app6URL:
-            representation += f"{SkypeMsg.bold('URL #6')}: {self.app6URL}\n"
-        if self.app7URL:
-            representation += f"{SkypeMsg.bold('URL #7')}: {self.app7URL}\n"
-        if self.app8URL:
-            representation += f"{SkypeMsg.bold('URL #8')}: {self.app8URL}\n"
-        if self.app9URL:
-            representation += f"{SkypeMsg.bold('URL #9')}: {self.app9URL}\n"
-        if self.app10URL:
-            representation += f"{SkypeMsg.bold('URL #10')}: {self.app10URL}\n"
+        if self.app5url:
+            representation += f"{SkypeMsg.bold('URL #5')}: {self.app5url}\n"
+        if self.app6url:
+            representation += f"{SkypeMsg.bold('URL #6')}: {self.app6url}\n"
+        if self.app7url:
+            representation += f"{SkypeMsg.bold('URL #7')}: {self.app7url}\n"
+        if self.app8url:
+            representation += f"{SkypeMsg.bold('URL #8')}: {self.app8url}\n"
+        if self.app9url:
+            representation += f"{SkypeMsg.bold('URL #9')}: {self.app9url}\n"
+        if self.app10url:
+            representation += f"{SkypeMsg.bold('URL #10')}: {self.app10url}\n"
 
         return representation
 
