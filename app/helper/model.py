@@ -16,6 +16,9 @@ class Alert(BaseModel):
     commitURL: str
     changelogURL: str
     silenceURL: str
+    sonarqubeURL: Optional[str]
+    app1URL: Optional[str]
+    app2URL: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -26,10 +29,13 @@ class Alert(BaseModel):
         time_emote = SkypeMsg.emote("time")
         return (
             f"{SkypeMsg.bold('Stage')}: {self.stage}\n"
+            f"{SkypeMsg.bold('URL #1')}: {self.app1URL}\n"
+            f"{SkypeMsg.bold('URL #2')}: {self.app2URL}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
             f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
+            f"{SkypeMsg.link(url=self.sonarqubeURL, display='SonarQube')}\n"
             f"{SkypeMsg.link(url=self.changelogURL, display='CHANGELOG.md')}\n"
         )
 
