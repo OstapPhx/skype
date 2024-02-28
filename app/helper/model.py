@@ -19,6 +19,14 @@ class Alert(BaseModel):
     sonarqubeURL: Optional[str]
     app1URL: Optional[str]
     app2URL: Optional[str]
+    app3URL: Optional[str]
+    app4URL: Optional[str]
+    app5URL: Optional[str]
+    app6URL: Optional[str]
+    app7URL: Optional[str]
+    app8URL: Optional[str]
+    app9URL: Optional[str]
+    app10URL: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -43,6 +51,22 @@ class Alert(BaseModel):
             representation += f"{SkypeMsg.bold('URL #1')}: {self.app1URL}\n"
         if self.app2URL:
             representation += f"{SkypeMsg.bold('URL #2')}: {self.app2URL}\n"
+        if self.app3URL:
+            representation += f"{SkypeMsg.bold('URL #3')}: {self.app3URL}\n"
+        if self.app4URL:
+            representation += f"{SkypeMsg.bold('URL #4')}: {self.app4URL}\n"
+        if self.app5URL:
+            representation += f"{SkypeMsg.bold('URL #5')}: {self.app5URL}\n"
+        if self.app6URL:
+            representation += f"{SkypeMsg.bold('URL #6')}: {self.app6URL}\n"
+        if self.app7URL:
+            representation += f"{SkypeMsg.bold('URL #7')}: {self.app7URL}\n"
+        if self.app8URL:
+            representation += f"{SkypeMsg.bold('URL #8')}: {self.app8URL}\n"
+        if self.app9URL:
+            representation += f"{SkypeMsg.bold('URL #9')}: {self.app9URL}\n"
+        if self.app10URL:
+            representation += f"{SkypeMsg.bold('URL #10')}: {self.app10URL}\n"
 
         return representation
 
