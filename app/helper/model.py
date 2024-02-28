@@ -27,17 +27,24 @@ class Alert(BaseModel):
 
     def model_representer(self):
         time_emote = SkypeMsg.emote("time")
-        return (
+        representation = (
             f"{SkypeMsg.bold('Stage')}: {self.stage}\n"
-            f"{SkypeMsg.bold('URL #1')}: {self.app1URL}\n"
-            f"{SkypeMsg.bold('URL #2')}: {self.app2URL}\n"
             f"{SkypeMsg.bold('Values')}: {self.value_string_parser()}\n"
             f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
-            f"{SkypeMsg.link(url=self.sonarqubeURL, display='SonarQube')}\n"
             f"{SkypeMsg.link(url=self.changelogURL, display='CHANGELOG.md')}\n"
         )
+
+        # Conditional lines based on URL values
+        if self.sonarqubeURL:
+            representation += f"{SkypeMsg.link(url=self.sonarqubeURL, display='SonarQube')}\n"
+        if self.app1URL:
+            representation += f"{SkypeMsg.bold('URL #1')}: {self.app1URL}\n"
+        if self.app2URL:
+            representation += f"{SkypeMsg.bold('URL #2')}: {self.app2URL}\n"
+
+        return representation
 
     def value_string_parser(self):
         # Define the pattern
