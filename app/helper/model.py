@@ -14,7 +14,7 @@ class Alert(BaseModel):
     generatorURL: Optional[str]
     fingerprint: Optional[str]
     commitURL: str
-    changelogURL: str
+    changelogURL: Optional[str]
     silenceURL: str
     sonarqubeurl: Optional[str]
     app1url: Optional[str]
