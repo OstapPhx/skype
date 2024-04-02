@@ -41,10 +41,11 @@ class Alert(BaseModel):
             f"{time_emote} {SkypeMsg.bold('Pipeline date')}: {self.startsAt}\n"
             f"{SkypeMsg.link(url=self.silenceURL, display='Pipeline URL')}\n"
             f"{SkypeMsg.link(url=self.commitURL, display='Commit URL')}\n"
-            f"{SkypeMsg.link(url=self.changelogURL, display='CHANGELOG.md')}\n"
         )
 
         # Conditional lines based on URL values
+        if self.changelogURL:
+            representation += f"{SkypeMsg.link(url=self.changelogURL, display='CHANGELOG.md')}\n"
         if self.sonarqubeurl:
             representation += f"{SkypeMsg.link(url=self.sonarqubeurl, display='SonarQube')}\n"
         if self.app1url:
