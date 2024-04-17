@@ -92,7 +92,7 @@ class Alert(BaseModel):
 
 class GrafanaAlert(BaseModel):
     receiver: Optional[str]
-    failtstatus: Optional[str]
+    failstatus: Optional[str]
     successtatus: Optional[str]
     orgId: Optional[int]
     projectName: str
@@ -113,7 +113,7 @@ class GrafanaAlert(BaseModel):
             return (
                 f"{SkypeMsg.bold('GrafanaAlert')}:\n"
                 f"{SkypeMsg.bold('receiver')}: {self.receiver}\n"
-                f"{SkypeMsg.bold('status')}: {self.failtstatus}\n"
+                f"{SkypeMsg.bold('status')}: {self.failstatus}\n"
                 f"{SkypeMsg.bold('status')}: {self.successtatus}\n"
                 f"{SkypeMsg.bold('orgId')}: {self.orgId}\n"
                 f"{SkypeMsg.bold('alerts')}: {', '.join(str(alert) for alert in self.alerts)}\n"
@@ -141,11 +141,11 @@ class GrafanaAlert(BaseModel):
                 "resolved": SkypeMsg.emote("cry"),
             }
 
-            emote = status_emoticon_dict.get(self.status, "")
+            emote = status_emoticon_dict.get(self.orgId, "")
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
                 f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
-                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failtstatus.upper()} \n"
+                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
