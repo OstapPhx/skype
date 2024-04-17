@@ -7,6 +7,8 @@ import re
 
 class Alert(BaseModel):
     status: str
+    failstatus: Optional[str]
+    successtatus: Optional[str]
     labels: Optional[Dict[str, str]]
     stage: str
     annotations: Optional[Dict[str, str]]
@@ -147,7 +149,7 @@ class GrafanaAlert(BaseModel):
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
        #         f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
-        #        f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
