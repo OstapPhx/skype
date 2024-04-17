@@ -93,35 +93,30 @@ class Alert(BaseModel):
 
 
 class GrafanaAlert(BaseModel):
-    # All the fields as you initially specified
-    receiver: Optional[str]
+    # Other attributes are omitted for brevity
     failstatus: Optional[str]
     successtatus: Optional[str]
-    status: Optional[str]
-    orgId: Optional[int]
     projectName: str
+    alerts: Optional[List[Alert]]
 
     def model_representer(self, verbose=False):
         success_emote = SkypeMsg.emote("smile")
         fail_emote = SkypeMsg.emote("cry")
         project_emote = SkypeMsg.emote("bomb")
-        pin_emote = SkypeMsg.emote("pushpin")
 
         status_lines = ""
         if self.successtatus:
-            status_lines += f"{success_emote} {SkypeMsg.bold('Success Status')}: {self.successtatus.upper()} \n"
+            status_lines += f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
         if self.failstatus:
-            status_lines += f"{fail_emote} {SkypeMsg.bold('Fail Status')}: {self.failstatus.upper()} \n"
+            status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
 
         join_char = "\n\n"
         text_indent = "    "
 
         alert_details = join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts) if self.alerts else ""
 
-        details = (
+        return (
             f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
             + status_lines
             + alert_details
         )
-
-        return details
