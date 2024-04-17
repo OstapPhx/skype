@@ -124,7 +124,7 @@ class GrafanaAlert(BaseModel):
         alert_details = join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts) if self.alerts else ""
 
         return (
-            + project_lines
+            project_lines
             + status_lines
             + alert_details
         )
