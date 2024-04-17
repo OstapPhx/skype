@@ -100,51 +100,23 @@ class GrafanaAlert(BaseModel):
     alerts: Optional[List[Alert]]
 
     def model_representer(self, verbose=False):
-        success_emote = SkypeMsg.emote("smile")
+        success_emote = SkypeMsg.emote("clap")
         fail_emote = SkypeMsg.emote("cry")
-        project_emote = SkypeMsg.emote("bomb")
-        laugh = SkypeMsg.emote("laugh")
-        cool = SkypeMsg.emote("cool")
-        wink = SkypeMsg.emote("wink")
-        heart = SkypeMsg.emote("heart")
-        angry = SkypeMsg.emote("angry")
-        sad = SkypeMsg.emote("sad")
-        surprised = SkypeMsg.emote("surprised")
-        nerdy = SkypeMsg.emote("nerdy")
-        confused = SkypeMsg.emote("confused")
-        sick = SkypeMsg.emote("sick")
-        sleepy = SkypeMsg.emote("sleepy")
-        dancing = SkypeMsg.emote("dancing")
-        sun = SkypeMsg.emote("sun")
-        flower = SkypeMsg.emote("flower")
-        coffee = SkypeMsg.emote("coffee")
-        cake = SkypeMsg.emote("cake")
-        music = SkypeMsg.emote("music")
-        rain = SkypeMsg.emote("rain")
-        star = SkypeMsg.emote("star")
-        clap = SkypeMsg.emote("clap")
-        think = SkypeMsg.emote("think")
-        wave = SkypeMsg.emote("wave")
-        thumbsup = SkypeMsg.emote("thumbsup")
-        thumbsdown = SkypeMsg.emote("thumbsdown")
-        beer = SkypeMsg.emote("beer")
-        cocktail = SkypeMsg.emote("cocktail")
-        pizza = SkypeMsg.emote("pizza")
-        cash = SkypeMsg.emote("cash")
-        monkey = SkypeMsg.emote("monkey")
-        ghost = SkypeMsg.emote("ghost")
-        pumpkin = SkypeMsg.emote("pumpkin")
-        soccer = SkypeMsg.emote("soccer")
-        car = SkypeMsg.emote("car")
-        island = SkypeMsg.emote("island")
-        tornado = SkypeMsg.emote("tornado")
-        heartbreak = SkypeMsg.emote("heartbreak")
+        project_emote = SkypeMsg.emote("sun")
+        project_failed_emote = SkypeMsg.emote("angry")
+
 
         status_lines = ""
         if self.successtatus:
             status_lines += f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
         if self.failstatus:
-             status_lines += f"{fail_emote} {laugh} {cool} {wink} {heart} {angry} {sad} {surprised} {nerdy} {confused} {sick} {sleepy} {dancing} {sun} {flower} {coffee} {cake} {music} {rain} {star} {clap} {think} {wave} {thumbsup} {thumbsdown} {beer} {cocktail} {pizza} {cash} {monkey} {ghost} {pumpkin} {soccer} {car} {island} {tornado} {heartbreak} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+             status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+
+        project_lines = ""
+        if self.successtatus:
+            project_lines += f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
+        if self.failstatus:
+             project_lines += f"{project_failed_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_failed_emote} \n"
 
         join_char = "\n\n"
         text_indent = "    "
@@ -152,7 +124,7 @@ class GrafanaAlert(BaseModel):
         alert_details = join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts) if self.alerts else ""
 
         return (
-            f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
+            + project_lines
             + status_lines
             + alert_details
         )
