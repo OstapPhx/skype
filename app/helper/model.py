@@ -101,9 +101,9 @@ class GrafanaAlert(BaseModel):
 
     def model_representer(self, verbose=False):
         success_emote = SkypeMsg.emote("clap")
-        fail_emote = SkypeMsg.emote("cry")
+        fail_emote = SkypeMsg.emote("angry")
         project_emote = SkypeMsg.emote("sun")
-        project_failed_emote = SkypeMsg.emote("angry")
+        project_failed_emote = SkypeMsg.emote("rain")
 
 
         status_lines = ""
