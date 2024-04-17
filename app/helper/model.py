@@ -91,32 +91,98 @@ class Alert(BaseModel):
             result += "{} = {} \t ".format(metric, value)
         return result
 
+class SkypeMsg:
+    emoticons = {
+        "smile": ":)",
+        "sad": ":(",
+        "laugh": ":D",
+        "wink": ";)",
+        "cry": ":'(",
+        "tongue_out": ":P",
+        "cool": "(cool)",
+        "surprised": ":O",
+        "angry": "(angry)",
+        "heart": "(heart)",
+        "yawn": "(yawn)",
+        "puke": "(puke)",
+        "doh": "(doh)",
+        "dance": "(dance)",
+        "ninja": "(ninja)",
+        "devil": "(devil)",
+        "angel": "(angel)",
+        "envy": "(envy)",
+        "wait": "(wait)",
+        "bear": "(bear)",
+        "makeup": "(makeup)",
+        "chuckle": "(chuckle)",
+        "clap": "(clap)",
+        "think": "(think)",
+        "bow": "(bow)",
+        "rofl": "(rofl)",
+        "whew": "(whew)",
+        "happy": "(happy)",
+        "smirk": "(smirk)",
+        "nod": "(nod)",
+        "shake": "(shake)",
+        "punch": "(punch)",
+        "emo": "(emo)",
+        "yes": "(yes)",
+        "no": "(no)",
+        "handshake": "(handshake)",
+        "highfive": "(highfive)",
+        "heartbreak": "(heartbreak)",
+        "mail": "(mail)",
+        "flower": "(flower)",
+        "rain": "(rain)",
+        "sun": "(sun)",
+        "music": "(music)",
+        "coffee": "(coffee)",
+        "pizza": "(pizza)",
+        "cash": "(cash)",
+        "muscle": "(muscle)",
+        "cake": "(cake)",
+        "beer": "(beer)",
+        "drink": "(drink)"
+        # Add other emoticons as needed
+    }
 
-class GrafanaAlert(BaseModel):
-    # Other attributes are omitted for brevity
-    failstatus: Optional[str]
-    successtatus: Optional[str]
-    projectName: str
-    alerts: Optional[List[Alert]]
+    @staticmethod
+    def emote(name):
+        """Retrieve the Skype emoticon shortcut based on the given name."""
+        return SkypeMsg.emoticons.get(name, "")
+
+    @staticmethod
+    def bold(text):
+        """Format the text to appear bold, adapt this method based on how you handle formatting."""
+        return f"**{text}**" 
+
+class GrafanaAlert:
+    def __init__(self, projectName: str, failstatus: Optional[str] = None, successtatus: Optional[str] = None, alerts: Optional[List[Alert]] = None):
+        self.projectName = projectName
+        self.failstatus = failstatus
+        self.successtatus = successtatus
+        self.alerts = alerts
+
+        # Assigning emoticons to instance variables
+        self.success_emote = SkypeMsg.emote("smile")
+        self.fail_emote = SkypeMsg.emote("cry")
+        self.project_emote = SkypeMsg.emote("bomb")
 
     def model_representer(self, verbose=False):
-        success_emote = SkypeMsg.emote("smile")
-        fail_emote = SkypeMsg.emote("cry")
-        project_emote = SkypeMsg.emote("bomb")
-
         status_lines = ""
         if self.successtatus:
-            status_lines += f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
+            status_lines += f"{self.success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
         if self.failstatus:
-            status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+            status_lines += f"{self.fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
 
         join_char = "\n\n"
         text_indent = "    "
 
-        alert_details = join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts) if self.alerts else ""
+        alert_details = (join_char.join(textwrap.indent(alert.model_representer(), text_indent) 
+                        for alert in self.alerts) if self.alerts else "")
 
         return (
-            f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
+            f"{self.project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {self.project_emote} \n"
             + status_lines
             + alert_details
         )
