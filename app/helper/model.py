@@ -94,6 +94,7 @@ class GrafanaAlert(BaseModel):
     receiver: Optional[str]
     failstatus: Optional[str]
     successtatus: Optional[str]
+    status: Optional[str]
     orgId: Optional[int]
     projectName: str
     alerts: Optional[List[Alert]]
@@ -115,6 +116,7 @@ class GrafanaAlert(BaseModel):
                 f"{SkypeMsg.bold('receiver')}: {self.receiver}\n"
                 f"{SkypeMsg.bold('status')}: {self.failstatus}\n"
                 f"{SkypeMsg.bold('status')}: {self.successtatus}\n"
+                f"{SkypeMsg.bold('status')}: {self.status}\n"
                 f"{SkypeMsg.bold('orgId')}: {self.orgId}\n"
                 f"{SkypeMsg.bold('alerts')}: {', '.join(str(alert) for alert in self.alerts)}\n"
                 f"{SkypeMsg.bold('groupLabels')}: {', '.join(str(label) for label in self.groupLabels)}\n"
@@ -141,7 +143,7 @@ class GrafanaAlert(BaseModel):
                 "resolved": SkypeMsg.emote("cry"),
             }
 
-            emote = status_emoticon_dict.get(self.orgId, "")
+            emote = status_emoticon_dict.get(self.status, "")
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
                 f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
