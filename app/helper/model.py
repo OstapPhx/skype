@@ -92,7 +92,8 @@ class Alert(BaseModel):
 
 class GrafanaAlert(BaseModel):
     receiver: Optional[str]
-    status: str
+    failtstatus: Optional[str]
+    successtatus: Optional[str]
     orgId: Optional[int]
     projectName: str
     alerts: Optional[List[Alert]]
@@ -112,7 +113,8 @@ class GrafanaAlert(BaseModel):
             return (
                 f"{SkypeMsg.bold('GrafanaAlert')}:\n"
                 f"{SkypeMsg.bold('receiver')}: {self.receiver}\n"
-                f"{SkypeMsg.bold('status')}: {self.status}\n"
+                f"{SkypeMsg.bold('status')}: {self.failtstatus}\n"
+                f"{SkypeMsg.bold('status')}: {self.successtatus}\n"
                 f"{SkypeMsg.bold('orgId')}: {self.orgId}\n"
                 f"{SkypeMsg.bold('alerts')}: {', '.join(str(alert) for alert in self.alerts)}\n"
                 f"{SkypeMsg.bold('groupLabels')}: {', '.join(str(label) for label in self.groupLabels)}\n"
@@ -130,8 +132,9 @@ class GrafanaAlert(BaseModel):
             join_char = "\n\n"
             text_indent = "    "
             alert_name = self.commonLabels.get("alertname", "")
-            project_emote = SkypeMsg.emote("fire")
-            checkmark_emote = SkypeMsg.emote("cry")
+            project_emote = SkypeMsg.emote("bomb")
+            fail_emote = SkypeMsg.emote("cry")
+            success_emote = SkypeMsg.emote("smile")
             pin_emote = SkypeMsg.emote("pushpin")
             status_emoticon_dict = {
                 "firing": SkypeMsg.emote("fire"),
@@ -141,7 +144,8 @@ class GrafanaAlert(BaseModel):
             emote = status_emoticon_dict.get(self.status, "")
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
-                f"{checkmark_emote} {SkypeMsg.bold('Status')}: {self.status.upper()} \n"
+                f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
+                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failtstatus.upper()} \n"
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
