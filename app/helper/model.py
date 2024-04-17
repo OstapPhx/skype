@@ -100,17 +100,6 @@ class GrafanaAlert(BaseModel):
     status: Optional[str]
     orgId: Optional[int]
     projectName: str
-    alerts: Optional[List[Alert]]
-    groupLabels: Optional[Dict[str, str]]
-    commonLabels: Optional[Dict[str, str]]
-    commonAnnotations: Optional[Dict[str, str]]
-    externalURL: Optional[str]
-    version: Optional[str]
-    groupKey: Optional[str]
-    truncatedAlerts: Optional[int]
-    title: Optional[str]
-    state: Optional[str]
-    message: Optional[str]
 
     def model_representer(self, verbose=False):
         success_emote = SkypeMsg.emote("smile")
@@ -132,14 +121,6 @@ class GrafanaAlert(BaseModel):
         details = (
             f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
             + status_lines
-            + f"{SkypeMsg.bold('External URL')}: {self.externalURL}\n"
-            + f"{SkypeMsg.bold('Org ID')}: {self.orgId}\n"
-            + f"{SkypeMsg.bold('Version')}: {self.version}\n"
-            + f"{SkypeMsg.bold('Group Key')}: {self.groupKey}\n"
-            + f"{SkypeMsg.bold('Truncated Alerts')}: {self.truncatedAlerts}\n"
-            + f"{SkypeMsg.bold('State')}: {self.state}\n"
-            + f"{SkypeMsg.bold('Message')}: {self.message}\n"
-            + f"{SkypeMsg.bold('Info:')}\n"
             + alert_details
         )
 
