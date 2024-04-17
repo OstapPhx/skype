@@ -146,8 +146,8 @@ class GrafanaAlert(BaseModel):
             emote = status_emoticon_dict.get(self.status, "")
             return (
                 f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
-                f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
-                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+       #         f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
+        #        f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
                 f"{SkypeMsg.bold('Info:')}\n"
                 f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
             )
