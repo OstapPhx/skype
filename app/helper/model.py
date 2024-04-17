@@ -103,12 +103,48 @@ class GrafanaAlert(BaseModel):
         success_emote = SkypeMsg.emote("smile")
         fail_emote = SkypeMsg.emote("cry")
         project_emote = SkypeMsg.emote("bomb")
+        laugh = SkypeMsg.emote("laugh")
+        cool = SkypeMsg.emote("cool")
+        wink = SkypeMsg.emote("wink")
+        heart = SkypeMsg.emote("heart")
+        angry = SkypeMsg.emote("angry")
+        sad = SkypeMsg.emote("sad")
+        surprised = SkypeMsg.emote("surprised")
+        nerdy = SkypeMsg.emote("nerdy")
+        confused = SkypeMsg.emote("confused")
+        sick = SkypeMsg.emote("sick")
+        sleepy = SkypeMsg.emote("sleepy")
+        dancing = SkypeMsg.emote("dancing")
+        sun = SkypeMsg.emote("sun")
+        flower = SkypeMsg.emote("flower")
+        coffee = SkypeMsg.emote("coffee")
+        cake = SkypeMsg.emote("cake")
+        music = SkypeMsg.emote("music")
+        rain = SkypeMsg.emote("rain")
+        star = SkypeMsg.emote("star")
+        clap = SkypeMsg.emote("clap")
+        think = SkypeMsg.emote("think")
+        wave = SkypeMsg.emote("wave")
+        thumbsup = SkypeMsg.emote("thumbsup")
+        thumbsdown = SkypeMsg.emote("thumbsdown")
+        beer = SkypeMsg.emote("beer")
+        cocktail = SkypeMsg.emote("cocktail")
+        pizza = SkypeMsg.emote("pizza")
+        cash = SkypeMsg.emote("cash")
+        monkey = SkypeMsg.emote("monkey")
+        ghost = SkypeMsg.emote("ghost")
+        pumpkin = SkypeMsg.emote("pumpkin")
+        soccer = SkypeMsg.emote("soccer")
+        car = SkypeMsg.emote("car")
+        island = SkypeMsg.emote("island")
+        tornado = SkypeMsg.emote("tornado")
+        heartbreak = SkypeMsg.emote("heartbreak")
 
         status_lines = ""
         if self.successtatus:
             status_lines += f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
         if self.failstatus:
-            status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+             status_lines += f"{fail_emote} {laugh} {cool} {wink} {heart} {angry} {sad} {surprised} {nerdy} {confused} {sick} {sleepy} {dancing} {sun} {flower} {coffee} {cake} {music} {rain} {star} {clap} {think} {wave} {thumbsup} {thumbsdown} {beer} {cocktail} {pizza} {cash} {monkey} {ghost} {pumpkin} {soccer} {car} {island} {tornado} {heartbreak} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
 
         join_char = "\n\n"
         text_indent = "    "
