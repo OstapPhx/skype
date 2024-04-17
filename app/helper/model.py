@@ -134,8 +134,8 @@ class GrafanaAlert(BaseModel):
             checkmark_emote = SkypeMsg.emote("smile")
             pin_emote = SkypeMsg.emote("pushpin")
             status_emoticon_dict = {
-                "firing": SkypeMsg.emote("bomb"),
-                "resolved": SkypeMsg.emote("smile"),
+                "firing": SkypeMsg.emote("fire"),
+                "resolved": SkypeMsg.emote("cry"),
             }
 
             emote = status_emoticon_dict.get(self.status, "")
