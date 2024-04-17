@@ -93,6 +93,7 @@ class Alert(BaseModel):
 
 
 class GrafanaAlert(BaseModel):
+    # All the fields as you initially specified
     receiver: Optional[str]
     failstatus: Optional[str]
     successtatus: Optional[str]
@@ -112,44 +113,34 @@ class GrafanaAlert(BaseModel):
     message: Optional[str]
 
     def model_representer(self, verbose=False):
-        if verbose:
-            return (
-                f"{SkypeMsg.bold('GrafanaAlert')}:\n"
-                f"{SkypeMsg.bold('receiver')}: {self.receiver}\n"
-                f"{SkypeMsg.bold('status')}: {self.failstatus}\n"
-                f"{SkypeMsg.bold('status')}: {self.successtatus}\n"
-                f"{SkypeMsg.bold('status')}: {self.status}\n"
-                f"{SkypeMsg.bold('orgId')}: {self.orgId}\n"
-                f"{SkypeMsg.bold('alerts')}: {', '.join(str(alert) for alert in self.alerts)}\n"
-                f"{SkypeMsg.bold('groupLabels')}: {', '.join(str(label) for label in self.groupLabels)}\n"
-                f"{SkypeMsg.bold('commonLabels')}: {self.commonLabels}\n"
-                f"{SkypeMsg.bold('commonAnnotations')}: {', '.join(str(annotation) for annotation in self.commonAnnotations)}\n"
-                f"{SkypeMsg.bold('externalURL')}: {self.externalURL}\n"
-                f"{SkypeMsg.bold('version')}: {self.version}\n"
-                f"{SkypeMsg.bold('groupKey')}: {self.groupKey}\n"
-                f"{SkypeMsg.bold('truncatedAlerts')}: {self.truncatedAlerts}\n"
-                f"{SkypeMsg.bold('title')}: {self.title}\n"
-                f"{SkypeMsg.bold('state')}: {self.state}\n"
-                f"{SkypeMsg.bold('message')}: {self.message}\n"
-            )
-        else:
-            join_char = "\n\n"
-            text_indent = "    "
-            alert_name = self.commonLabels.get("alertname", "")
-            project_emote = SkypeMsg.emote("bomb")
-            fail_emote = SkypeMsg.emote("cry")
-            success_emote = SkypeMsg.emote("smile")
-            pin_emote = SkypeMsg.emote("pushpin")
-            status_emoticon_dict = {
-                "firing": SkypeMsg.emote("fire"),
-                "resolved": SkypeMsg.emote("cry"),
-            }
+        success_emote = SkypeMsg.emote("smile")
+        fail_emote = SkypeMsg.emote("cry")
+        project_emote = SkypeMsg.emote("bomb")
+        pin_emote = SkypeMsg.emote("pushpin")
 
-            emote = status_emoticon_dict.get(self.status, "")
-            return (
-                f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
-                f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
-                f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
-                f"{SkypeMsg.bold('Info:')}\n"
-                f"{join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts)}\n"
-            )
+        status_lines = ""
+        if self.successtatus:
+            status_lines += f"{success_emote} {SkypeMsg.bold('Success Status')}: {self.successtatus.upper()} \n"
+        if self.failstatus:
+            status_lines += f"{fail_emote} {SkypeMsg.bold('Fail Status')}: {self.failstatus.upper()} \n"
+
+        join_char = "\n\n"
+        text_indent = "    "
+
+        alert_details = join_char.join(textwrap.indent(alert.model_representer(), text_indent) for alert in self.alerts) if self.alerts else ""
+
+        details = (
+            f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
+            + status_lines
+            + f"{SkypeMsg.bold('External URL')}: {self.externalURL}\n"
+            + f"{SkypeMsg.bold('Org ID')}: {self.orgId}\n"
+            + f"{SkypeMsg.bold('Version')}: {self.version}\n"
+            + f"{SkypeMsg.bold('Group Key')}: {self.groupKey}\n"
+            + f"{SkypeMsg.bold('Truncated Alerts')}: {self.truncatedAlerts}\n"
+            + f"{SkypeMsg.bold('State')}: {self.state}\n"
+            + f"{SkypeMsg.bold('Message')}: {self.message}\n"
+            + f"{SkypeMsg.bold('Info:')}\n"
+            + alert_details
+        )
+
+        return details
