@@ -10,7 +10,7 @@ class Alert(BaseModel):
     failstatus: Optional[str]
     successtatus: Optional[str]
     labels: Optional[Dict[str, str]]
-    stage: str
+    stage: Optional[str]
     annotations: Optional[Dict[str, str]]
     startsAt: str
     generatorURL: Optional[str]
@@ -30,6 +30,7 @@ class Alert(BaseModel):
     app8url: Optional[str]
     app9url: Optional[str]
     app10url: Optional[str]
+    alerturl: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -72,6 +73,8 @@ class Alert(BaseModel):
             representation += f"{SkypeMsg.bold('URL #9')}: {self.app9url}\n"
         if self.app10url:
             representation += f"{SkypeMsg.bold('URL #10')}: {self.app10url}\n"
+        if self.alerturl:
+            representation += f"{SkypeMsg.bold('ALERT URL')}: {self.alerturl}\n"
 
         return representation
 
@@ -96,6 +99,7 @@ class GrafanaAlert(BaseModel):
     # Other attributes are omitted for brevity
     failstatus: Optional[str]
     successtatus: Optional[str]
+    alertstatus: Optional[str]
     projectName: str
     alerts: Optional[List[Alert]]
 
@@ -104,6 +108,7 @@ class GrafanaAlert(BaseModel):
         fail_emote = SkypeMsg.emote("angry")
         project_emote = SkypeMsg.emote("sun")
         project_failed_emote = SkypeMsg.emote("rain")
+        project_alert_emote = SkypeMsg.emote("rain")
 
 
         status_lines = ""
@@ -111,12 +116,16 @@ class GrafanaAlert(BaseModel):
             status_lines += f"{success_emote} {SkypeMsg.bold('Status')}: {self.successtatus.upper()} \n"
         if self.failstatus:
              status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
+        if self.alertstatus:
+             status_lines += f"{project_alert_emote} {SkypeMsg.bold('Alert')}: {self.alertstatus.upper()} \n"
 
         project_lines = ""
         if self.successtatus:
             project_lines += f"{project_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_emote} \n"
         if self.failstatus:
              project_lines += f"{project_failed_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_failed_emote} \n"
+        if self.alertstatus:
+             project_lines += f"{project_alert_emote} {SkypeMsg.bold('Organization')}: {self.projectName.upper()} {project_failed_emote} \n"
 
         join_char = "\n\n"
         text_indent = "    "
