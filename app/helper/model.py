@@ -15,10 +15,10 @@ class Alert(BaseModel):
     startsAt: str
     generatorURL: Optional[str]
     fingerprint: Optional[str]
-    commitURL: str
+    commitURL: Optional[str]
     changelogURL: Optional[str]
     runBy: Optional[str]
-    silenceURL: str
+    silenceURL: Optional[str]
     sonarqubeurl: Optional[str]
     app1url: Optional[str]
     app2url: Optional[str]
