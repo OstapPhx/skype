@@ -78,7 +78,7 @@ class Alert(BaseModel):
         if self.app10url:
             representation += f"{SkypeMsg.bold('URL #10')}: {self.app10url}\n"
         if self.alerturl:
-            representation += f"{SkypeMsg.bold('ALERT URL')}: {self.alerturl}\n"
+            representation += f"{SkypeMsg.link(url=self.alerturl, display='ALERT URL')}\n"
 
         return representation
 
