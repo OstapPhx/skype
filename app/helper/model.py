@@ -32,6 +32,7 @@ class Alert(BaseModel):
     app10url: Optional[str]
     alerturl: Optional[str]
     alerttype: Optional[str]
+    period: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -80,8 +81,12 @@ class Alert(BaseModel):
             representation += f"{SkypeMsg.bold('URL #10')}: {self.app10url}\n"
         if self.alerttype:
             representation += f"{SkypeMsg.bold('Alert type')}: {self.alerttype}\n"
+        if self.period:
+            representation += f"{SkypeMsg.bold('Period')}: {self.period}\n"
         if self.alerturl:
             representation += f"{SkypeMsg.link(url=self.alerturl, display='ALERT URL')}\n"
+        if self.severity:
+            representation += f"{SkypeMsg.bold('SEVERITY')}: {self.severity}\n"
 
         return representation
 
