@@ -112,7 +112,7 @@ class GrafanaAlert(BaseModel):
         fail_emote = SkypeMsg.emote("angry")
         project_emote = SkypeMsg.emote("sun")
         project_failed_emote = SkypeMsg.emote("rain")
-        project_alert_emote = SkypeMsg.emote("rain")
+        project_alert_emote = SkypeMsg.emote("fire")
 
 
         status_lines = ""
