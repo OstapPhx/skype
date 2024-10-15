@@ -112,7 +112,7 @@ class GrafanaAlert(BaseModel):
         fail_emote = SkypeMsg.emote("angry")
         project_emote = SkypeMsg.emote("sun")
         project_failed_emote = SkypeMsg.emote("rain")
-        project_alert_emote = SkypeMsg.emote("fire")
+        project_alert_emote = SkypeMsg.emote("bomb")
 
 
         status_lines = ""
@@ -121,7 +121,7 @@ class GrafanaAlert(BaseModel):
         if self.failstatus:
              status_lines += f"{fail_emote} {SkypeMsg.bold('Status')}: {self.failstatus.upper()} \n"
         if self.alertstatus:
-             status_lines += f"{project_alert_emote} {SkypeMsg.bold('Alert')}: {self.alertstatus.upper()} \n"
+             status_lines += f"{project_alert_emote} {SkypeMsg.bold('Organization')}: {self.alertstatus.upper()} \n"
 
         project_lines = ""
         if self.successtatus:
@@ -129,7 +129,7 @@ class GrafanaAlert(BaseModel):
         if self.failstatus:
              project_lines += f"{project_failed_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_failed_emote} \n"
         if self.alertstatus:
-             project_lines += f"{project_alert_emote} {SkypeMsg.bold('Organization')}: {self.projectName.upper()} {project_failed_emote} \n"
+             project_lines += f"{project_alert_emote} {SkypeMsg.bold('Alert')}: {self.projectName.upper()} {project_alert_emote} \n"
 
         join_char = "\n\n"
         text_indent = "    "
