@@ -32,6 +32,7 @@ class Alert(BaseModel):
     app10url: Optional[str]
     alerturl: Optional[str]
     alerttype: Optional[str]
+    severity: Optional[str]
     period: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
