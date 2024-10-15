@@ -31,6 +31,7 @@ class Alert(BaseModel):
     app9url: Optional[str]
     app10url: Optional[str]
     alerturl: Optional[str]
+    alerttype: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -77,6 +78,8 @@ class Alert(BaseModel):
             representation += f"{SkypeMsg.bold('URL #9')}: {self.app9url}\n"
         if self.app10url:
             representation += f"{SkypeMsg.bold('URL #10')}: {self.app10url}\n"
+        if self.alerttype:
+            representation += f"{SkypeMsg.bold('Alert type')}: {self.alerttype}\n"
         if self.alerturl:
             representation += f"{SkypeMsg.link(url=self.alerturl, display='ALERT URL')}\n"
 
@@ -129,7 +132,7 @@ class GrafanaAlert(BaseModel):
         if self.failstatus:
              project_lines += f"{project_failed_emote} {SkypeMsg.bold('Project')}: {self.projectName.upper()} {project_failed_emote} \n"
         if self.alertstatus:
-             project_lines += f"{project_alert_emote} {SkypeMsg.bold('Alert')}: {self.projectName.upper()} {project_alert_emote} \n"
+             project_lines += f"{project_alert_emote} {SkypeMsg.bold('ALERT')}: {self.projectName.upper()} {project_alert_emote} \n"
 
         join_char = "\n\n"
         text_indent = "    "
