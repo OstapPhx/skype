@@ -34,6 +34,8 @@ class Alert(BaseModel):
     alerttype: Optional[str]
     severity: Optional[str]
     period: Optional[str]
+    alertcount: Optional[str]
+    alertthreshold: Optional[str]
     dashboardURL: Optional[str]
     valueString: Optional[str]
     values: Optional[Dict[str, float]]
@@ -84,6 +86,10 @@ class Alert(BaseModel):
             representation += f"{SkypeMsg.bold('Alert type')}: {self.alerttype}\n"
         if self.period:
             representation += f"{SkypeMsg.bold('Period')}: {self.period}\n"
+        if self.alertthreshold:
+            representation += f"{SkypeMsg.bold('Alert Threshold')}: {self.alertthreshold}\n"
+        if self.alertcount:
+            representation += f"{SkypeMsg.bold('Alert count')}: {self.alertcount}\n"
         if self.alerturl:
             representation += f"{SkypeMsg.link(url=self.alerturl, display='ALERT URL')}\n"
         if self.severity:
