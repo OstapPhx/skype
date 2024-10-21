@@ -1,0 +1,34 @@
+name: AGENT Deploy to Skype Runner
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger deployment from
+
+jobs:
+  deploy:
+    name: Deploy on Skype Runner
+    runs-on: self-hosted  # Specifies that this job should run on the self-hosted agent
+    labels: [skype]       # Label for your specific runner (skype)
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create testpipeline folder
+        run: |
+          mkdir -p ~/testpipeline
+          echo "Folder 'testpipeline' created"
+
+      - name: Deploy application
+        run: |
+          # Commands to deploy the application go here.
+          # For example, this can be copying files, building code, etc.
+          echo "Starting deployment"
+          # Example: cp -r * /path/to/deploy/location
+          echo "Deployment finished"
+
+      - name: Verify folder and deployment
+        run: |
+          ls -l ~/testpipeline
+          echo "Deployment and folder verification completed"
