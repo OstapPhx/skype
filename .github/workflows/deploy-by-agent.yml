@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Deploy on Skype Runner
-    runs-on: [self-hosted, skype]  # Correct usage to specify your self-hosted runner with label 'skype'
+    runs-on: [self-hosted]  # Correct usage to specify your self-hosted runner with label 'skype'
 
     steps:
       - name: Checkout repository
