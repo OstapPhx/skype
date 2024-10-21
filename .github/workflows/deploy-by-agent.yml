@@ -1,4 +1,4 @@
-name: AGENT Deploy to Skype Runner
+name: Deploy to Skype Runner
 
 on:
   push:
@@ -8,8 +8,7 @@ on:
 jobs:
   deploy:
     name: Deploy on Skype Runner
-    runs-on: self-hosted  # Specifies that this job should run on the self-hosted agent
-    labels: [skype]       # Label for your specific runner (skype)
+    runs-on: [self-hosted, skype]  # Correct usage to specify your self-hosted runner with label 'skype'
 
     steps:
       - name: Checkout repository
